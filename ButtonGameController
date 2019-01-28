@@ -1,0 +1,84 @@
+/*
+  ButtonStates
+
+  Test the different Button methods: pressed, released, held
+  and getSwitch.
+
+  This example code is in the public domain.
+
+  created in Aug 2018 by D. Cuartielles
+  based on work by F. Vanzati (2011) and M. Loglio (2013)
+*/
+
+#include <EduIntro.h>
+#include <Keyboard.h>
+
+Button btnW(D2);
+Button btnS(D3);
+Button btnUp(D4);
+Button btnDown(D5);
+
+
+void setup()
+{
+  // we are going to use the serial communication as a
+  // way to see on the PC what is happening on the Arduino
+  Serial.begin(9600);
+  Keyboard.begin();
+}
+void loop()
+{
+  if(btnW.pressed()) {
+    Serial.println("pressed");
+    Keyboard.press('A');
+  }
+  if(btnW.held())
+    Serial.println("held");
+  if(btnW.released()) {
+    Serial.println("released");
+    Serial.print("switch: ");
+    Serial.println(btnW.readSwitch());
+    Keyboard.release('A');
+  }
+
+  if (btnS.pressed()) {
+    Serial.println("pressed");
+    Keyboard.press('Z');
+  }
+  if(btnS.held())
+    Serial.println("held");
+  if(btnS.released()) {
+    Serial.println("released");
+    Serial.print("switch: ");
+    Serial.println(btnS.readSwitch());
+    Keyboard.release('Z');
+  }
+  
+   if(btnUp.pressed()) {
+    Serial.println("pressed");
+    Keyboard.press('K');
+  }
+  if(btnUp.held())
+    Serial.println("held");
+  if(btnUp.released()) {
+    Serial.println("released");
+    Serial.print("switch: ");
+    Serial.println(btnUp.readSwitch());
+    Keyboard.release('K');
+  }
+  
+   if(btnDown.pressed()) {
+    Serial.println("pressed");
+    Keyboard.press('M');
+  }
+  if(btnDown.held())
+    Serial.println("held");
+  if(btnDown.released()) {
+    Serial.println("released");
+    Serial.print("switch: ");
+    Serial.println(btnDown.readSwitch());
+    Keyboard.release('M');
+  }
+ 
+  delay(50);
+}
